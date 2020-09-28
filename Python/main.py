@@ -20,7 +20,7 @@ import sys
 from mqtt import MQTTClient
 
 wifi = WiFi()
-print(WiFi.connectwifi("bmx22c", "1234bmx22c"))
+print(WiFi.connectwifi("mdr", "1234bmx22c"))
 
 orgID = "09gwpk"
 deviceType = "pycom"
