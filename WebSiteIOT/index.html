@@ -10,68 +10,58 @@
 </head>
 
 <body>
-<!----------------Details------------------>
-	<section id="container">
+	<section class="container">
 		<section class=flex-element >
 
-			<section class="container_row" >
-                <div class="container_details">
-                    <p class="Titre_détails">Température</p>
-                    <p class="Resultat_details">22 degrés</p>
-                </div>
-                <div class="container_details">
-                    <p class="Titre_détails">luminosité</p>
-                    <p class="Resultat_details">100 Lumens</p>
-                </div>
-                <div class="container_details">
-                    <p class="Titre_détails">Humidité</p>
-                    <p class="Resultat_details">40 %</p>
-                </div>
-            </section>
-
 <!----------------Barre----------------->
-            <section class="container_row" id="hauteur_Bar">
-                <div class="container_column">
-                    <p>Mode automatique</p>
-                    <div class="container_Bar" id="container_Bar">
-                        <div class="button_Bar">
+            <section class="containerParties">
+                <section id="hauteur_Bar">
+                    <div class="container_TextBarre">
+                        <p id="TextBarre">Mode automatique</p>
+                        <div class="container_Bar" id="container_Bar">
+                            <div class="button_Bar">
+                            </div>
                         </div>
                     </div>
-            
-                    <script>
-                        document.getElementById('container_Bar').addEventListener('click', () => {
-                            document.querySelector('#container_Bar div').classList.toggle('active_button_Bar')
-                        })
-                    </script>
-                </div>
+                </section>
             </section>
-
 <!----------------Button------------------>
-            <section class="container_row">
+            <section class="containerParties">
 
                 <div class="container_2Boutons">
-                    <div class="container_Bouton">
-                        <p>Température</p>
+                    <div class="container_Bouton" id="temp">
+                        <button type="Température" value="Température" class ="boutonchoix" id="btnTempérature">
+                            <p class="Titre_détails">Température</p>
+                            <p class="Resultat_details">22 degrés</p>
+                        </button>
                     </div>
-                    <div class="container_Bouton">
-                        <p>Humidité</p>
+                    <div class="container_Bouton" id="humidite">
+                        <button type="Humidité" value="Humidité" class ="boutonchoix" id="btnHumidité">
+                            <p class="Titre_détails">Humidité</p>
+                            <p class="Resultat_details">60%</p>
+                        </button>
                     </div>
                 </div>
 
                 <div class="container_2Boutons">
-                    <div class="container_Bouton">
-                        <p>Lumière</p>
+                    <div class="container_Bouton" id="lumiere">
+                        <button type="Lumière" value="Lumière" class="boutonchoix" id="btnLumière"><p class="Resultat_details">  
+                            <p class="Titre_détails">Lumière</p>
+                            <p class="Resultat_details">100 lumens</p>
+                        </button>
                     </div>
-                    <div class="container_Bouton">
-                        <p>Autre</p>
+                    <div class="container_Bouton" id="parametres">
+                        <button type="Autre" value="Autre" class ="boutonchoix" id="btnAutre">
+                            <p class="Titre_détails">Autre</p>
+                            <p class="Resultat_details">?</p>
+                        </button>
                     </div>
                 </div>
-            </section>
-
-
-
+		    </section>
+            
 		</section>
-	</section>
+    </section>
+    <script src="main.js"></script>
 </body>
 </html>
 

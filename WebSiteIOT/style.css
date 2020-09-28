@@ -20,9 +20,8 @@ html {
 
 /*----------------------------------*/
 /* CSS Global*/
-#container{
-    background-color: rgb(255, 255, 255);
-    margin: 0vh 0vw 0vh 0vw;
+.container{
+    margin: 3vh 0vw 0vh 0vw;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -35,47 +34,31 @@ html {
     height: 100vh;  
 }
 
-.container_row {
-    display: flex;
-    flex-direction: row;
-    margin: 2vh 2vw 2vh 2vw;
-    background-color: rgb(120, 125, 128);
-}
-
-
-/*----------------------------------*/
-/* CSS Détails*/
-.container_details{
-    display: flex;
-    flex-direction: column; 
-    height: 5vh;
-    width: auto;
-    margin: 2vh auto 2vh auto;
-    background-color: rgb(152, 157, 160);
-}
-
-.Titre_détails{
-    font-size: 40px ;
-}
-
-.Resultat_details{
-    font-size: 30px ;
-    font-weight: bold;
+.containerParties{
+    margin-top: 2vh;
 }
 
 /*----------------------------------*/
 /* CSS BARRE ON OFF*/
-.container_column{
-    margin: auto;
+.container_TextBarre{
+    margin: 0vh auto 2vh auto;
+    width: 70%;
     display: flex;
     flex-direction: column;
 }
 
+#TextBarre{
+    font-size: 40px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    Color:rgb(56, 56, 56)
+}
+
 .container_Bar {
-    width: 70%;
-    height: 60px;
+    width: 90%;
+    height: 120px;
     background-color: #C7C7C7;
-    border-radius: 40px;
+    border-radius: 60px;
     position: relative;
 }
 
@@ -85,16 +68,16 @@ html {
 
 .button_Bar {
     position: absolute;
-    width: 100px;
+    width: 170px;
     height: 100%;
     background-color: #FE9090;
-    border-radius: 40px;
+    border-radius: 100px;
     margin-left: 0;
     transition: all 1s ease-in-out;
 }
 
 .active_button_Bar {
-    margin-left: calc(100% - 100px);
+    margin-left: calc(100% - 170px);
     background-color: #90FEAA;
 }
 
@@ -103,24 +86,107 @@ html {
 /* CSS BOUTON*/
 .container_2Boutons{
     display: flex;
-    flex-direction: column; 
-    background-color: rgb(255, 0, 221);
-    margin: 2vh 2vw 2vh 2vw;
-}
-
-.container_Bouton{
-    display: flex;
     flex-direction: row; 
-    background-color: rgb(255, 0, 0); 
-    margin: 2vh 2vw 2vh 2vw; 
+    margin: 0vh 1vw 2vh 1vw; 
+
 }
 
+.container_Bouton{ 
+    display: flex;
+    margin: auto auto auto auto; 
+}
 
+.boutonchoix{
+    width: 410px;
+    height: 350px;
+    font-size: 50px;
+    text-align: center;
+    border: 0px;
+    border-radius: 40px;
+    color : rgb(117, 119, 119)
+}
 
+.Titre_détails{
+    font-size: 60px ;
+}
 
+.Resultat_details{
+    font-size: 50px ;
+    font-weight: bold;
+}
 
+#btnTempérature{
+    background-color:rgb(255, 242, 220) ;
+}
+#btnHumidité{
+    background-color:rgb(238, 220, 255) ;
+}
+#btnLumière{
+    background-color:rgb(255, 220, 220) ;
+}
+#btnAutre{
+    background-color:rgb(220, 255, 250) ;
+}
 
+/*----------------------------------*/
+/* The Modal (background) */
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 50% auto; /* 50% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
 
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#TitreModal{
+    font-size: 50px;
+    text-align: center;
+}
+
+.DivColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputModal{
+    width: 60%;
+    height: 30px;
+    margin: 10px auto 10px auto; 
+}
+
+.DivRow{
+    display: flex;
+    flex-direction: row;
+}
 
 
 
