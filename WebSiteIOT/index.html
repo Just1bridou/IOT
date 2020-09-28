@@ -32,13 +32,19 @@
                     <div class="container_Bouton" id="temp">
                         <button type="Température" value="Température" class ="boutonchoix" id="btnTempérature">
                             <p class="Titre_détails">Température</p>
-                            <p class="Resultat_details">22 degrés</p>
+                            <div class="detailsRow">
+                                <p class="Resultat_details" id="valeurtemp">22</p>
+                                <p class="Resultat_Unite">°</p>
+                            </div>
                         </button>
                     </div>
                     <div class="container_Bouton" id="humidite">
                         <button type="Humidité" value="Humidité" class ="boutonchoix" id="btnHumidité">
                             <p class="Titre_détails">Humidité</p>
-                            <p class="Resultat_details">60%</p>
+                            <div class="detailsRow">
+                                <p class="Resultat_details" id="valeurhumidite">60</p>
+                                <p class="Resultat_Unite">%</p>
+                            </div>
                         </button>
                     </div>
                 </div>
@@ -47,13 +53,15 @@
                     <div class="container_Bouton" id="lumiere">
                         <button type="Lumière" value="Lumière" class="boutonchoix" id="btnLumière"><p class="Resultat_details">  
                             <p class="Titre_détails">Lumière</p>
-                            <p class="Resultat_details">100 lumens</p>
-                        </button>
+                            <div class="detailsRow">
+                                <p class="Resultat_details" id="valeurlumiere">100</p>
+                                <p class="Resultat_Unite">Lumens</p>
+                            </div>
+                            </button>
                     </div>
                     <div class="container_Bouton" id="parametres">
                         <button type="Autre" value="Autre" class ="boutonchoix" id="btnAutre">
-                            <p class="Titre_détails">Autre</p>
-                            <p class="Resultat_details">?</p>
+                            <p class="Titre_détails">Paramètres</p>
                         </button>
                     </div>
                 </div>

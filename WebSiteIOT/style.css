@@ -7,11 +7,11 @@
 }
 @font-face {
     font-family: "OpenSans-Regular";
-    src: url('../ttf/OpenSans-Regular.ttf');
+    src: url('ttf/OpenSans-Regular.ttf');
 } 
 @font-face {
     font-family: "BebasNeue-Regular";
-    src: url('../ttf/BebasNeue-Regular.ttf');
+    src: url('ttf/BebasNeue-Regular.ttf');
 }
 html {
     scroll-behavior: smooth;
@@ -110,9 +110,19 @@ html {
     font-size: 60px ;
 }
 
+.detailsRow{
+    display: flex;
+    flex-direction: row;
+}
+
 .Resultat_details{
     font-size: 50px ;
     font-weight: bold;
+    margin-left:auto;
+}
+.Resultat_Unite{
+    font-size: 50px ;
+    margin-right:auto;
 }
 
 #btnTempérature{
@@ -167,8 +177,9 @@ html {
 }
 
 #TitreModal{
-    font-size: 50px;
+    font-size: 100px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .DivColumn{
@@ -178,18 +189,41 @@ html {
 }
 
 .inputModal{
-    width: 60%;
-    height: 30px;
-    margin: 10px auto 10px auto; 
+    width: 65%;
+    height: 80px;
+    font-size: 60px;
+    margin: 10px auto 40px auto; 
+    border-top:0px;
+    border-right : 0px;
+    border-left : 0px;
+    border-bottom : 1px solid black;
 }
 
 .DivRow{
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
+.BtnModal{
+    width: 220px;
+    height: 80px;
+    margin: auto;
+    font-size: 50px;
+    text-align: center;
+    border : 0px;
+    border-radius: 20px;
+}
 
+#BtnModalOk{
+    background-color: rgb(184,255,164);
+    color:rgb(94, 94, 94)
+}
 
+#BtnModalAnnuler{
+    background-color: rgb(255,167,164);
+    color:rgb(94, 94, 94)
+}
 
 
 

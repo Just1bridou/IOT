@@ -7,7 +7,6 @@ document.getElementById('container_Bar').addEventListener('click', () => {
 // Get the button that opens the modal
 let buttons = document.querySelectorAll('.container_Bouton');
 for(let button of buttons) {
-    console.log(button)
     button.addEventListener('click', () => {
         showModal(button.id)
     })
@@ -17,7 +16,7 @@ function showModal(id) {
     //nettoie
     let divModalContainer
     if (divModalContainer == 1)
-        teardown();
+        teardown(divModalContainer);
 
     //création fenetre modale
     divModalContainer = document.createElement('div');
@@ -33,16 +32,14 @@ function showModal(id) {
 
     let textModal = document.createElement('div');
     textModal.id = 'TitreModal'
-    if (id == 'temp'){textModal.innerHTML = "Température"}
-    if (id == 'humidite'){textModal.innerHTML = "Humidité"}
-    if (id == 'lumiere'){textModal.innerHTML = "Lumière"}
-    if (id == 'parametres'){textModal.innerHTML = "Paramètres"}
+    textModal.innerHTML = dataJson[id]['nom']
 
     let DivColumn = document.createElement('div');
     DivColumn.className = "DivColumn"
 
     let InputModal = document.createElement('input');
     InputModal.className = "inputModal"
+    InputModal.setAttribute("type", "number");
 
     let DivRow = document.createElement('div');
     DivRow.className = "DivRow"
@@ -51,6 +48,7 @@ function showModal(id) {
     BtnModalOk.className = 'BtnModal'
     BtnModalOk.id = 'BtnModalOk'
     BtnModalOk.innerHTML = "Ok"
+    BtnModalOk.setAttribute('idTruc',id)
 
     let BtnModalAnnuler = document.createElement('button'); 
     BtnModalAnnuler.className = 'BtnModal'
@@ -81,12 +79,47 @@ function showModal(id) {
             divModalContainer.style.display = "none";
         }
     }
+    // clicque bouton ok et annuler
+        BtnModalOk.addEventListener('click', () => {
+            ExecuteModalOk(InputModal.value,id,divModalContainer)
+        })
+        BtnModalAnnuler.addEventListener('click', () => {
+            ExecuteModalAnnuler(divModalContainer)
+        })
+
 }
 
 //nettoie la modal au lancement pour pas qu'il n'y ai pas de reste
-function teardown(){
+function teardown(divModalContainer){
     document.body.removeChild(divModalContainer)
 }
+function ExecuteModalAnnuler(divModalContainer){
+    document.body.removeChild(divModalContainer)
+}
+
+function ExecuteModalOk(donnée,id,divModalContainer){
+    let texteDetails = document.querySelector('#valeur'+id);
+    texteDetails.innerHTML = donnée
+    document.body.removeChild(divModalContainer)
+}
+
+
+
+const dataJson = {
+        "temp": {
+            "nom": "Température"
+        },
+        "humidite": {
+            "nom": "Humidité"
+        },
+        "parametres": {
+            "nom": "Paramètre"
+        },
+        "lumiere": {
+            "nom": "Lumière"
+        }
+    }
+
 
 
 
