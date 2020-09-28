@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>IOT</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<!-- 	<link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css" />
+ 	<link rel="icon" type="image/png" href="images/logo.png" />-->
+</head>
+
+<body>
+<!----------------Details------------------>
+	<section id="container">
+		<section class=flex-element >
+
+			<section class="container_row" >
+                <div class="container_details">
+                    <p class="Titre_détails">Température</p>
+                    <p class="Resultat_details">22 degrés</p>
+                </div>
+                <div class="container_details">
+                    <p class="Titre_détails">luminosité</p>
+                    <p class="Resultat_details">100 Lumens</p>
+                </div>
+                <div class="container_details">
+                    <p class="Titre_détails">Humidité</p>
+                    <p class="Resultat_details">40 %</p>
+                </div>
+            </section>
+
+<!----------------Barre----------------->
+            <section class="container_row" id="hauteur_Bar">
+                <div class="container_column">
+                    <p>Mode automatique</p>
+                    <div class="container_Bar" id="container_Bar">
+                        <div class="button_Bar">
+                        </div>
+                    </div>
+            
+                    <script>
+                        document.getElementById('container_Bar').addEventListener('click', () => {
+                            document.querySelector('#container_Bar div').classList.toggle('active_button_Bar')
+                        })
+                    </script>
+                </div>
+            </section>
+
+<!----------------Button------------------>
+            <section class="container_row">
+
+                <div class="container_2Boutons">
+                    <div class="container_Bouton">
+                        <p>Température</p>
+                    </div>
+                    <div class="container_Bouton">
+                        <p>Humidité</p>
+                    </div>
+                </div>
+
+                <div class="container_2Boutons">
+                    <div class="container_Bouton">
+                        <p>Lumière</p>
+                    </div>
+                    <div class="container_Bouton">
+                        <p>Autre</p>
+                    </div>
+                </div>
+            </section>
+
+
+
+		</section>
+	</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,131 @@
+*{
+    margin: 0px;
+	padding: 0px;
+    font-family: "OpenSans-Regular", sans-serif;
+    list-style: none;
+    user-select: none;
+}
+@font-face {
+    font-family: "OpenSans-Regular";
+    src: url('../ttf/OpenSans-Regular.ttf');
+} 
+@font-face {
+    font-family: "BebasNeue-Regular";
+    src: url('../ttf/BebasNeue-Regular.ttf');
+}
+html {
+    scroll-behavior: smooth;
+}
+
+
+/*----------------------------------*/
+/* CSS Global*/
+#container{
+    background-color: rgb(255, 255, 255);
+    margin: 0vh 0vw 0vh 0vw;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-element {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100vh;  
+}
+
+.container_row {
+    display: flex;
+    flex-direction: row;
+    margin: 2vh 2vw 2vh 2vw;
+    background-color: rgb(120, 125, 128);
+}
+
+
+/*----------------------------------*/
+/* CSS Détails*/
+.container_details{
+    display: flex;
+    flex-direction: column; 
+    height: 5vh;
+    width: auto;
+    margin: 2vh auto 2vh auto;
+    background-color: rgb(152, 157, 160);
+}
+
+.Titre_détails{
+    font-size: 40px ;
+}
+
+.Resultat_details{
+    font-size: 30px ;
+    font-weight: bold;
+}
+
+/*----------------------------------*/
+/* CSS BARRE ON OFF*/
+.container_column{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.container_Bar {
+    width: 70%;
+    height: 60px;
+    background-color: #C7C7C7;
+    border-radius: 40px;
+    position: relative;
+}
+
+.container_Bar:hover {
+    cursor: pointer;
+}
+
+.button_Bar {
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-color: #FE9090;
+    border-radius: 40px;
+    margin-left: 0;
+    transition: all 1s ease-in-out;
+}
+
+.active_button_Bar {
+    margin-left: calc(100% - 100px);
+    background-color: #90FEAA;
+}
+
+
+/*----------------------------------*/
+/* CSS BOUTON*/
+.container_2Boutons{
+    display: flex;
+    flex-direction: column; 
+    background-color: rgb(255, 0, 221);
+    margin: 2vh 2vw 2vh 2vw;
+}
+
+.container_Bouton{
+    display: flex;
+    flex-direction: row; 
+    background-color: rgb(255, 0, 0); 
+    margin: 2vh 2vw 2vh 2vw; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
