@@ -38,6 +38,30 @@ html {
     margin-top: 2vh;
 }
 
+
+/*----------------------------------*/
+/* CSS Détails*/
+.container_row {
+    display: flex;
+    flex-direction: row;
+    margin: 0vh 2vw 0vh 2vw;
+}
+.container_details{
+    display: flex;
+    flex-direction: column; 
+    width: auto;
+    margin: 0vh auto 2vh auto;
+}
+
+.Titre_valactu{
+    font-size: 50px ;
+}
+
+.Resultat_Unitevalactu{
+    font-size: 45px ;
+    margin-right:auto;
+}
+
 /*----------------------------------*/
 /* CSS BARRE ON OFF*/
 .container_TextBarre{
@@ -84,6 +108,11 @@ html {
 
 /*----------------------------------*/
 /* CSS BOUTON*/
+.TitreBtn{
+    font-size: 72px;
+    margin-left: 6vw;
+    margin-bottom: 2vh;
+}
 .container_2Boutons{
     display: flex;
     flex-direction: row; 
