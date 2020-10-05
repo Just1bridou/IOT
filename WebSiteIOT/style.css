@@ -268,8 +268,18 @@ h5 {
 
 .detailsRow {
     transition: 0.2s all ease-in-out;
+    color: black;
+    background-color: white;
+    padding: 20px 5px;
+    border-radius: 30px;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .details_show {
-    transform: translateX(-200%);
+    transform: translateY(300%);
+   /* opacity: 0;*/
 }
