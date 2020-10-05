@@ -23,21 +23,21 @@
                 <div class="container_details">
                     <p class="Titre_valactu">Température</p>
                     <div class="detailsRow">
-                        <p class="Resultat_details">22</p>
+                        <p class="Resultat_details" id="tempContainer">0</p>
                         <p class="Resultat_Unitevalactu">°</p>
                     </div>
                 </div>
                 <div class="container_details">
                     <p class="Titre_valactu">luminosité</p>
                     <div class="detailsRow">
-                        <p class="Resultat_details">100</p>
+                        <p class="Resultat_details" id="lumiContainer">0</p>
                         <p class="Resultat_Unitevalactu">Lumens</p>
                     </div>
                 </div>
                 <div class="container_details">
                     <p class="Titre_valactu">Humidité</p>
                     <div class="detailsRow">
-                        <p class="Resultat_details">40</p>
+                        <p class="Resultat_details" id="humiContainer">0</p>
                         <p class="Resultat_Unitevalactu">%</p>
                     </div>
                 </div>
@@ -85,14 +85,14 @@
                         <button type="Lumière" value="Lumière" class="boutonchoix" id="btnLumière"><p class="Resultat_details">  
                             <p class="Titre_détails">Lumière</p>
                             <div class="detailsRow">
-                                <p class="Resultat_details" id="valeurlumiere">100</p>
-                                <p class="Resultat_Unite">Lumens</p>
+                                <p class="Resultat_details" id="valeurlumiere">50</p>
+                                <p class="Resultat_Unite"> Lumens</p>
                             </div>
                             </button>
                     </div>
                     <div class="container_Bouton BtnPara" id="parametres">
                         <button type="Autre" value="Autre" class ="boutonchoix" id="btnAutre">
-                            <p class="Titre_détails">Paramètres</p>
+                            <p class="Titre_détails">Info</p>
                         </button>
                     </div>
                 </div>
@@ -100,6 +100,8 @@
             
 		</section>
     </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
     <script src="main.js"></script>
 </body>
 </html>

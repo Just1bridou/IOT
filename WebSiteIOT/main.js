@@ -1,12 +1,19 @@
+document.addEventListener('DOMContentLoaded', () => {
+
 //BTN "automatique"
 
 boutonsVisible = true
+var isAuto = false;
 
 document.getElementById('container_Bar').addEventListener('click', () => {
     document.querySelector('#container_Bar div').classList.toggle('active_button_Bar')
 
     lesBoutons = document.getElementsByClassName('boutonchoix');
-
+          isAuto = !isAuto;
+          setPublish("auto",isAuto);
+          if(isAuto) {
+              setPublish("lumiere", document.querySelector("#valeurlumiere").innerHTML)
+          }
 
 
           for(var i=0, len=lesBoutons.length; i<len; i++)
@@ -123,10 +130,17 @@ function ExecuteModalAnnuler(divModalContainer){
     document.body.removeChild(divModalContainer)
 }
 
-function ExecuteModalOk(donnée,id,divModalContainer){
+function ExecuteModalOk(donnee,id,divModalContainer){
+    dataChange(id, donnee)
     let texteDetails = document.querySelector('#valeur'+id);
-    texteDetails.innerHTML = donnée
+    texteDetails.innerHTML = donnee
     document.body.removeChild(divModalContainer)
+}
+
+function dataChange(id, donnee) {
+    if(id == "lumiere") {
+        setPublish(id, donnee)
+    }
 }
 
 
@@ -145,3 +159,104 @@ const dataJson = {
             "nom": "Lumière"
         }
     }
+<<<<<<< HEAD
+=======
+
+
+
+
+///////////////////////////Connected
+    // Changer vos paramètres
+    const myOrg = "09gwpk"
+    const typeId = "pycom";
+    const deviceId = "2";
+
+    const clientId  = 'a:'+myOrg+':tvqre63x9o';
+
+    client = new Paho.MQTT.Client(myOrg+".messaging.internetofthings.ibmcloud.com", 443, "", clientId);
+    clientPublish = new Paho.MQTT.Client(myOrg+".messaging.internetofthings.ibmcloud.com", 443, "", clientId);
+
+    // set callback handlers
+    client.onConnectionLost = function (responseObject) {
+        console.log("Connection Lost: "+responseObject.errorMessage);
+    }
+
+    client.onMessageArrived = function (message) {
+        let jsonData = JSON.parse(message.payloadString)
+
+        if(jsonData["temp"]==undefined || jsonData["light"]==undefined || jsonData["humi"]==undefined) {
+            return false;
+        }
+
+        replaceHTML("#tempContainer", Math.round(jsonData["temp"]),1)
+        replaceHTML("#lumiContainer", Math.round(jsonData["light"]))
+        replaceHTML("#humiContainer", Math.round(jsonData["humi"]))
+    }
+
+    function setPublish(id, donnee) {
+        console.log("publish")
+        let topic = 'iot-2/type/'+typeId+'/id/1/evt/data/fmt/json';
+
+        let jsonData = {
+            "id": id,
+            "data": donnee
+        }
+
+        client.subscribe(topic);
+        let str = JSON.stringify(jsonData)
+
+        console.log(str)
+
+        message = new Paho.MQTT.Message(str);
+        message.destinationName = topic;
+        client.send(message)
+        //client.publish("/World", "Hello from a better publish call!", 1, false)
+    }
+
+    // Topic pour accéder aux données
+    const topic = 'iot-2/type/'+typeId+'/id/'+deviceId+'/evt/data/fmt/json';
+    console.log(topic);
+
+    // Called when the connection is made
+    function onConnect(){
+        console.log("Connected!");
+        client.subscribe(topic);
+    }
+
+    function onConnectP(){
+        console.log("Connected publish!");
+    }
+
+    function onConnectF(){
+        console.log(" not Connected!");
+    }
+
+
+
+    // Changer vos paramètres de connexion
+    client.connect({
+        onSuccess: onConnect,
+        onFailure: onConnectF,
+        /*userName: "a-09gwpk-udxgpqwyhj",
+        password: "oRcKr4eGAMFgl+IcaK",*/
+        userName: "a-09gwpk-y2itpwbjl0",
+        password: "B3RWoC(8JqUhQGmdo-",
+        useSSL: true,
+    });
+
+  /*  clientPublish.connect({
+        onSuccess: onConnectP,
+        onFailure: onConnectF,
+        userName: "a-09gwpk-y2itpwbjl0",
+        password: "B3RWoC(8JqUhQGmdo-",
+        useSSL: true,
+    });*/
+
+   function replaceHTML(arg, val) {
+        document.querySelector(arg).innerHTML = val;
+    }
+
+
+
+})
+>>>>>>> f5730e5751fdd35996f282c270adfd8784350c1a
