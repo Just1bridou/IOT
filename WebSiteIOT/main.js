@@ -45,9 +45,25 @@ function showModal(id) {
     let DivColumn = document.createElement('div');
     DivColumn.className = "DivColumn"
 
-    let InputModal = document.createElement('input');
-    InputModal.className = "inputModal"
-    InputModal.setAttribute("type", "number");
+    let InputModal = null
+
+    if(id != "parametres") {
+        InputModal = document.createElement('input');
+        InputModal.className = "inputModal"
+        InputModal.setAttribute("type", "number");
+    } else {
+        let pres = document.createElement('h5');
+        pres.innerHTML = "Pression : " + dataJson["parametres"]["values"]["pression"]
+        let alt = document.createElement('h5');
+        alt.innerHTML = "Altitude : " + dataJson["parametres"]["values"]["altitude"]
+        let volt = document.createElement('h5');
+        volt.innerHTML = "Voltage : " + dataJson["parametres"]["values"]["voltage"]
+        
+        DivColumn.appendChild(pres)
+        DivColumn.appendChild(alt)
+        DivColumn.appendChild(volt)
+    }
+    
 
     let DivRow = document.createElement('div');
     DivRow.className = "DivRow"
@@ -71,7 +87,9 @@ function showModal(id) {
     divModalContent.appendChild(textModal)
     divModalContent.appendChild(DivColumn)
 
-    DivColumn.appendChild(InputModal)
+    if(id != "parametres") {
+        DivColumn.appendChild(InputModal)
+    }
     DivColumn.appendChild(DivRow)
     DivRow.appendChild(BtnModalOk)
     DivRow.appendChild(BtnModalAnnuler)
@@ -89,7 +107,11 @@ function showModal(id) {
     }
     // clicque bouton ok et annuler
         BtnModalOk.addEventListener('click', () => {
-            ExecuteModalOk(InputModal.value,id,divModalContainer)
+            if(id != "parametres") {
+                ExecuteModalOk(InputModal.value,id,divModalContainer)
+            } else {
+                ExecuteModalAnnuler(divModalContainer)
+            }
         })
         BtnModalAnnuler.addEventListener('click', () => {
             ExecuteModalAnnuler(divModalContainer)
@@ -113,9 +135,7 @@ function ExecuteModalOk(donnee,id,divModalContainer){
 }
 
 function dataChange(id, donnee) {
-    if(id == "lumiere") {
-        setPublish(id, donnee)
-    }
+    setPublish(id, donnee)
 }
 
 
@@ -128,7 +148,12 @@ const dataJson = {
             "nom": "Humidité"
         },
         "parametres": {
-            "nom": "Paramètre"
+            "nom": "Infos",
+            "values": {
+                "voltage": 0,
+                "pression": 0,
+                "altitude": 0
+            }
         },
         "lumiere": {
             "nom": "Lumière"
@@ -147,7 +172,6 @@ const dataJson = {
     const clientId  = 'a:'+myOrg+':tvqre63x9o';
 
     client = new Paho.MQTT.Client(myOrg+".messaging.internetofthings.ibmcloud.com", 443, "", clientId);
-    clientPublish = new Paho.MQTT.Client(myOrg+".messaging.internetofthings.ibmcloud.com", 443, "", clientId);
 
     // set callback handlers
     client.onConnectionLost = function (responseObject) {
@@ -164,14 +188,24 @@ const dataJson = {
         replaceHTML("#tempContainer", Math.round(jsonData["temp"]),1)
         replaceHTML("#lumiContainer", Math.round(jsonData["light"]))
         replaceHTML("#humiContainer", Math.round(jsonData["humi"]))
+
+        let values = dataJson["parametres"]["values"]
+        values["altitude"] = Math.round(jsonData["alt"])
+        values["pression"] = Math.round(jsonData["pres"])
+        values["voltage"] = Math.round(jsonData["volt"])
     }
 
     function setPublish(id, donnee) {
+
+        if(!donnee) {
+            return false;
+        }
+
         console.log("publish")
         let topic = 'iot-2/type/'+typeId+'/id/1/evt/data/fmt/json';
 
         let jsonData = {
-            "id": id,
+            "type": id,
             "data": donnee
         }
 
@@ -204,26 +238,14 @@ const dataJson = {
         console.log(" not Connected!");
     }
 
-
-
     // Changer vos paramètres de connexion
     client.connect({
         onSuccess: onConnect,
         onFailure: onConnectF,
-        /*userName: "a-09gwpk-udxgpqwyhj",
-        password: "oRcKr4eGAMFgl+IcaK",*/
         userName: "a-09gwpk-y2itpwbjl0",
         password: "B3RWoC(8JqUhQGmdo-",
         useSSL: true,
     });
-
-  /*  clientPublish.connect({
-        onSuccess: onConnectP,
-        onFailure: onConnectF,
-        userName: "a-09gwpk-y2itpwbjl0",
-        password: "B3RWoC(8JqUhQGmdo-",
-        useSSL: true,
-    });*/
 
    function replaceHTML(arg, val) {
         document.querySelector(arg).innerHTML = val;
