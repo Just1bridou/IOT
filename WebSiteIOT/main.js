@@ -1,7 +1,33 @@
 //BTN "automatique"
+
+boutonsVisible = true
+
 document.getElementById('container_Bar').addEventListener('click', () => {
     document.querySelector('#container_Bar div').classList.toggle('active_button_Bar')
+
+    lesBoutons = document.getElementsByClassName('boutonchoix');
+
+
+
+          for(var i=0, len=lesBoutons.length; i<len; i++)
+          {
+          lesBoutons[i].classList.toggle('desactivated');
+          lesBoutons[i].disabled = !lesBoutons[i].disabled
+          }
+
+
+
+        boutonsVisible = !boutonsVisible;
+
+            //for(bouton in lesBoutons) {
+            //  console.log(bouton);
+            //  bouton.style.backgroundColor = 'black'
+            //  bouton.classList.toggle('desactivate');
+            //}
+
+
 })
+
 
 
 // Get the button that opens the modal
@@ -44,13 +70,13 @@ function showModal(id) {
     let DivRow = document.createElement('div');
     DivRow.className = "DivRow"
 
-    let BtnModalOk = document.createElement('button'); 
+    let BtnModalOk = document.createElement('button');
     BtnModalOk.className = 'BtnModal'
     BtnModalOk.id = 'BtnModalOk'
     BtnModalOk.innerHTML = "Ok"
     BtnModalOk.setAttribute('idTruc',id)
 
-    let BtnModalAnnuler = document.createElement('button'); 
+    let BtnModalAnnuler = document.createElement('button');
     BtnModalAnnuler.className = 'BtnModal'
     BtnModalAnnuler.id = 'BtnModalAnnuler'
     BtnModalAnnuler.innerHTML = "Annuler"
@@ -119,7 +145,3 @@ const dataJson = {
             "nom": "Lumière"
         }
     }
-
-
-
-
