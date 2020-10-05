@@ -123,3 +123,52 @@ const dataJson = {
 
 
 
+///////////////////////////Connected
+    // Changer vos paramètres
+    const myOrg = "09gwpk" 
+    const typeId = "pycom";
+    const deviceId = "2";
+
+    const clientId  = 'a:'+myOrg+':tvqre63x9o';
+
+    client = new Paho.MQTT.Client(myOrg+".messaging.internetofthings.ibmcloud.com", 443, "", clientId);
+
+    // set callback handlers
+    client.onConnectionLost = function (responseObject) {
+        console.log("Connection Lost: "+responseObject.errorMessage);
+    }
+
+    client.onMessageArrived = function (message) {
+        let jsonData = JSON.parse(message.payloadString)
+        console.log(jsonData)
+        replaceHTML("#tempContainer", Math.round(jsonData["temp"]),1)
+        replaceHTML("#lumiContainer", Math.round(jsonData["light"]))
+        replaceHTML("#humiContainer", Math.round(jsonData["humi"]))
+    }
+
+    // Topic pour accéder aux données
+    const topic = 'iot-2/type/'+typeId+'/id/'+deviceId+'/evt/data/fmt/json';
+    console.log(topic);
+
+    // Called when the connection is made
+    function onConnect(){
+        console.log("Connected!");
+        client.subscribe(topic);
+    }
+
+    function onConnectF(){
+        console.log(" not Connected!");
+    }
+
+    // Changer vos paramètres de connexion
+    client.connect({
+        onSuccess: onConnect,
+        onFailure: onConnectF,
+        userName: "a-09gwpk-udxgpqwyhj",
+        password: "oRcKr4eGAMFgl+IcaK",
+        useSSL: true,
+    });
+
+   function replaceHTML(arg, val) {
+        document.querySelector(arg).innerHTML = val;
+    }
