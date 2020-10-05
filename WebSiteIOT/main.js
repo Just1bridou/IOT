@@ -1,22 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 //BTN "automatique"
+
+boutonsVisible = true
 var isAuto = false;
+
 document.getElementById('container_Bar').addEventListener('click', () => {
     document.querySelector('#container_Bar div').classList.toggle('active_button_Bar')
+    let details = document.querySelectorAll('.container_2Boutons .detailsRow')
+
+    for(detail of details) {
+        detail.classList.toggle('details_show')
+    }
+
+    lesBoutons = document.getElementsByClassName('boutonchoix');
     isAuto = !isAuto;
     setPublish("auto",isAuto);
     if(isAuto) {
         setPublish("lumiere", document.querySelector("#valeurlumiere").innerHTML)
     }
-})
 
+    for(var i=0, len=lesBoutons.length; i<len; i++)
+    {
+        lesBoutons[i].classList.toggle('desactivated');
+    }
+
+})
 
 // Get the button that opens the modal
 let buttons = document.querySelectorAll('.container_Bouton');
 for(let button of buttons) {
-    button.addEventListener('click', () => {
-        showModal(button.id)
+    button.addEventListener('click', (event) => {
+        if(isAuto) {
+            showModal(button.id)
+        }
     })
 }
 
@@ -68,13 +85,13 @@ function showModal(id) {
     let DivRow = document.createElement('div');
     DivRow.className = "DivRow"
 
-    let BtnModalOk = document.createElement('button'); 
+    let BtnModalOk = document.createElement('button');
     BtnModalOk.className = 'BtnModal'
     BtnModalOk.id = 'BtnModalOk'
     BtnModalOk.innerHTML = "Ok"
     BtnModalOk.setAttribute('idTruc',id)
 
-    let BtnModalAnnuler = document.createElement('button'); 
+    let BtnModalAnnuler = document.createElement('button');
     BtnModalAnnuler.className = 'BtnModal'
     BtnModalAnnuler.id = 'BtnModalAnnuler'
     BtnModalAnnuler.innerHTML = "Annuler"
@@ -160,12 +177,9 @@ const dataJson = {
         }
     }
 
-
-
-
 ///////////////////////////Connected
     // Changer vos paramètres
-    const myOrg = "09gwpk" 
+    const myOrg = "09gwpk"
     const typeId = "pycom";
     const deviceId = "2";
 
@@ -251,6 +265,5 @@ const dataJson = {
         document.querySelector(arg).innerHTML = val;
     }
 
-    
 
 })
