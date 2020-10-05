@@ -1,0 +1,51 @@
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+<script>
+
+    // Changer vos paramètres
+    const myOrg = "1hahkr" 
+    const typeId = "pycom";
+    const deviceId = "demo_1";
+
+    const clientId  = 'a:'+myOrg+':tvqre63x9o';
+
+    client = new Paho.MQTT.Client(myOrg+".messaging.internetofthings.ibmcloud.com", 443, "", clientId);
+
+    // set callback handlers
+    client.onConnectionLost = function (responseObject) {
+        console.log("Connection Lost: "+responseObject.errorMessage);
+    }
+
+    client.onMessageArrived = function (message) {
+        console.log("Message Arrived: "+message.payloadString);
+    }
+
+    // Topic pour accéder aux données
+    const topic = 'iot-2/type/'+typeId+'/id/'+deviceId+'/evt/data/fmt/json';
+    console.log(topic);
+
+    // Called when the connection is made
+    function onConnect(){
+        console.log("Connected!");
+        client.subscribe(topic);
+    }
+
+    function onConnectF(){
+        console.log(" not Connected!");
+    }
+
+    // Changer vos paramètres de connexion
+    client.connect({
+        onSuccess: onConnect,
+        onFailure: onConnectF,
+        userName: "a-1hahkr-tvqre63x9o",
+        password: "J2j5*myY&EiNL(7_ah",
+        useSSL: true
+    });
+
+
+</script>
